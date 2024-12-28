@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: #121212;
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #1e1e1e;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(45deg, #2c1810, #1a1a2e);
+    padding: 20px;
+    text-align: center;
+}
+
+.title {
+    font-size: clamp(20px, 4vw, 24px);
+    color: #ff9d00;
+    margin-bottom: 15px;
+}
+
+.reset-button {
+    background: #ff4500;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.reset-button:hover {
+    background: #ff6000;
+}
+
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    min-width: 120px;
+}
+
+.achievements {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 10px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.badge {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    background: #2a2a2a;
+    opacity: 0.3;
+    transition: all 0.3s ease;
+    margin: auto;
+    position: relative;
+}
+
+.badge.unlocked {
+    opacity: 1;
+    background: linear-gradient(45deg, #ff9d00, #ff4500);
+    box-shadow: 0 0 10px rgba(255, 157, 0, 0.3);
+}
+
+.badge-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 100;
+}
+
+.badge:hover .badge-tooltip {
+    visibility: visible;
+    opacity: 1;
+    bottom: 120%;
+}
+
+.task-list {
+    padding: 20px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background: #252525;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.task:hover {
+    background: #2a2a2a;
+    transform: translateX(5px);
+}
+
+.task input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 15px;
+    cursor: pointer;
+    accent-color: #ff9d00;
+}
+
+.task label {
+    flex: 1;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.task.completed {
+    background: #1a2e1a;
+}
+
+.task.completed label {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+.date-display {
+    color: #ff9d00;
+    text-align: center;
+    padding: 10px;
+    font-size: clamp(12px, 3vw, 14px);
+}
+
+.achievement-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(45deg, #ff9d00, #ff4500);
+    padding: 15px;
+    border-radius: 10px;
+    animation: slideIn 0.5s ease-out;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    max-width: 90vw;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin: 10px;
+    }
+    
+    .stats {
+        flex-direction: column;
+    }
+    
+    .stat {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .task {
+        padding: 10px;
+    }
+    
+    .task label {
+        font-size: 14px;
+    }
+}
